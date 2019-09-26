@@ -37,7 +37,7 @@ The steps of this project are the following:
 
 1.  Compute the camera calibration matrix and distortion coefficients given a set of chessboard images: To calculate camera calibration for Images that are stored in the folder called camera_cal, I compute the camera matrix and distortion co-efficients to undistort the all images. I used the calibration_calculate, cal_distortion functionsto calulate calibration matrix and distortion coefficients and then by using undistortion functions (in the corners_unwarp functions) i undistorted all images and by using  the corners_unwarp function I transformed them to Front view. An example of a distortion-corrected image is presented below:
 <p align="right">
-<img src="./output_images/1.png" alt="ompute the camera calibration" />
+<img src="./output_images/1.png" alt="compute the camera calibration" />
 <p align="right">
 
 
@@ -45,8 +45,13 @@ The steps of this project are the following:
 2.  Gradients and color thresholds,Sobel X , Y , Magnitude and Direction Gradients: 
 
 *   First I applied thresholds on X, Y (abs_sobel_thresh function), magnitude (mag_thresh function) and direction (dir_threshold function) gradients to combine them into a binaray image(named combined_gradient) by using combined_thresholds function.
-
- *  Then I combine the binary image from the last step (combined_gradient)  with  of the thresholded color channel H from HLS color spaces (HLScolor function) to obtain a binary image (combined_thresholds_color1) and then use this binary image to combine with the thresoled L channel from LUV space color (LUVcolor function) to get another binary image (combined_thresholds_color2) and then combined the resulting binary image from the last step with the thresoled R channel from RGB (RGBcolor function)and the resulting image (combined_thresholds_color3) from last step with the thresoled L channel from LAB colorsystem to obtain the binary thresholded image 4 (combined_thresholds_color4).
+<p align="right">
+<img src="./output_images/2.png" alt=" Gradients and color thresholds" />
+<p align="right">
+ <p align="right">
+<img src="./output_images/3.png" alt=" Gradients and color thresholds" />
+<p align="right">
+ *  Then I combine the binary image from the last step (combined_gradient)  with  of the thresholded color channel H from HLS color spaces (HLScolor function) to obtain a binary image (combined_thresholds_color1) and then use this binary image to combine with the thresoled L channel from LUV space color (LUVcolor function) to get another binary image (combined_thresholds_color2) and then use the resulting binary image from the last step to combine with the thresoled R channel from RGB (RGBcolor function)and the resulting image (combined_thresholds_color3) from last step with the thresoled L channel from LAB colorsystem to obtain the binary thresholded image 4 (combined_thresholds_color4).
  
  
 
