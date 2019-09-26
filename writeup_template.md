@@ -71,6 +71,8 @@ The steps of this project are the following:
 
 3. Perspective transform ("birds-eye view") 
 
+fsdfsdfdsfs
+
 First, I extracted the source and distinction points to perform a perspective transformation. Then I feed the binary threshold image from the last step into the transform_image(img) function to get a bird's eye view from above.
 
 4.  Nois Detection
