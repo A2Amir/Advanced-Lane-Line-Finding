@@ -37,6 +37,8 @@ The steps of this project are the following:
 
 1.  Compute the camera calibration matrix and distortion coefficients given a set of chessboard images: To calculate camera calibration for Images that are stored in the folder called camera_cal, I compute the camera matrix and distortion co-efficients to undistort the all images.
 
+ I used the calibration_calculate, cal_distortion functionsto calulate calibration matrix and distortion coefficients and then by using undistortion functions (in the corners_unwarp functions) i undistorted all images and by using  the corners_unwarp function I transformed fotos to bird eye view.
+
 2.  Gradients and color thresholds. Here I calculated Sobel X , Y , Magnitude and Direction Gradients
 
 I applied thresholds on X, Y and direction und magnitude gradients and combined them with threshold of  the color channel H from HLS color spaces to obtain the binary thresholded image 1 and then combine binary image from the last step with the L channel from LUV and R from RGB and L from LAB colorsystem to obtain the binary thresholded image 4.
