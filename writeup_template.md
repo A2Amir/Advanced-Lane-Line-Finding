@@ -51,9 +51,21 @@ The steps of this project are the following:
  <p align="right">
 <img src="./output_images/3.png" alt=" Gradients and color thresholds" />
 <p align="right">
+ 
  *  Then I combine the binary image from the last step (combined_gradient)  with  of the thresholded color channel H from HLS color spaces (HLScolor function) to obtain a binary image (combined_thresholds_color1) and then use this binary image to combine with the thresoled L channel from LUV space color (LUVcolor function) to get another binary image (combined_thresholds_color2) and then use the resulting binary image from the last step to combine with the thresoled R channel from RGB (RGBcolor function)and the resulting image (combined_thresholds_color3) from last step with the thresoled L channel from LAB colorsystem to obtain the binary thresholded image 4 (combined_thresholds_color4).
  
- 
+ <p align="right">
+<img src="./output_images/4.png" alt=" Gradients and color thresholds" />
+<p align="right">
+ <p align="right">
+<img src="./output_images/5.png" alt=" Gradients and color thresholds" />
+<p align="right">
+ <p align="right">
+<img src="./output_images/6.png" alt=" Gradients and color thresholds" />
+<p align="right">
+ <p align="right">
+<img src="./output_images/7.png" alt=" Gradients and color thresholds" />
+<p align="right">
 
 
 
