@@ -42,9 +42,12 @@ The steps of this project are the following:
 
 
 
-2.  Gradients and color thresholds. Here I calculated Sobel X , Y , Magnitude and Direction Gradients
+2.  Gradients and color thresholds,Sobel X , Y , Magnitude and Direction Gradients: 
 
-I applied thresholds on X, Y and direction und magnitude gradients and combined them with threshold of  the color channel H from HLS color spaces to obtain the binary thresholded image 1 and then combine binary image from the last step with the L channel from LUV and R from RGB and L from LAB colorsystem to obtain the binary thresholded image 4.
+*   First I applied thresholds on X, Y (abs_sobel_thresh function) and magnitude (mag_thresh function) direction (dir_threshold function) gradients to combine them into a binaray image(combined_gradient) by using combined_thresholds function.
+
+ *  I combine all  with  of the thresholded color channel H from HLS color spaces (HLScolor function) to obtain the binary thresholded (combined_thresholds_color1) and then combine binary image from the last step with the thresoled L channel from LUV space color (LUVcolor function) to get another binary image (combined_thresholds_color2) and then combined the resulting binary image from the last step with the thresoled R channel from RGB (RGBcolor function)and the resulting image (combined_thresholds_color3) from last step with the thresoled L channel from LAB colorsystem to obtain the binary thresholded image 4 (combined_thresholds_color4).
+
 
 
 3. Perspective transform ("birds-eye view") 
