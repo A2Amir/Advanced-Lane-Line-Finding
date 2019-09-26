@@ -78,8 +78,8 @@ The steps of this project are the following:
 <img src="./output_images/9.png" alt="  Perspective transform" />
 <p align="right">
 
-4.  Nois Detection
-By detecting Nois i am goining to use the variable (binary threshold image 1 )that is of Sobe X,Y, direction and magnitude gradients and H from the HLS coolor sytem cobination and has better result in noisy images.
+4.  Nois Detection: In this step Noise will be detected by using a function named noise_detect and if the result of this function is True, Instead of using the combined_thresholds_color4 wir are g goining to use the variable (combined_thresholds_color1)  which has better result in noisy images for Perspective transforming (step 3).
+
 
 5. Implement Sliding Windows and Fit a Polynomial
 
