@@ -35,16 +35,21 @@ The steps of this project are the following:
 
 ---
 
-1.  Compute the camera calibration matrix and distortion coefficients given a set of chessboard images: To calculate camera calibration for Images that are stored in the folder called camera_cal, I compute the camera matrix and distortion co-efficients to undistort the all images. I used the calibration_calculate, cal_distortion functionsto calulate calibration matrix and distortion coefficients and then by using undistortion functions (in the corners_unwarp functions) i undistorted all images and by using  the corners_unwarp function I transformed fotos to bird eye view. An example of a distortion-corrected image is presented below:
-<p align="center">
+1.  Compute the camera calibration matrix and distortion coefficients given a set of chessboard images: To calculate camera calibration for Images that are stored in the folder called camera_cal, I compute the camera matrix and distortion co-efficients to undistort the all images. I used the calibration_calculate, cal_distortion functionsto calulate calibration matrix and distortion coefficients and then by using undistortion functions (in the corners_unwarp functions) i undistorted all images and by using  the corners_unwarp function I transformed them to Front view. An example of a distortion-corrected image is presented below:
+<p align="right">
 <img src="./output_images/1.png" alt="ompute the camera calibration" />
-<p align="center">
+<p align="right">
 
 
 
-2.  Gradients and color thresholds. Here I calculated Sobel X , Y , Magnitude and Direction Gradients
+2.  Gradients and color thresholds,Sobel X , Y , Magnitude and Direction Gradients: 
 
-I applied thresholds on X, Y and direction und magnitude gradients and combined them with threshold of  the color channel H from HLS color spaces to obtain the binary thresholded image 1 and then combine binary image from the last step with the L channel from LUV and R from RGB and L from LAB colorsystem to obtain the binary thresholded image 4.
+*   First I applied thresholds on X, Y (abs_sobel_thresh function), magnitude (mag_thresh function) and direction (dir_threshold function) gradients to combine them into a binaray image(named combined_gradient) by using combined_thresholds function.
+
+ *  Then I combine the binary image from the last step (combined_gradient)  with  of the thresholded color channel H from HLS color spaces (HLScolor function) to obtain a binary image (combined_thresholds_color1) and then use this binary image to combine with the thresoled L channel from LUV space color (LUVcolor function) to get another binary image (combined_thresholds_color2) and then combined the resulting binary image from the last step with the thresoled R channel from RGB (RGBcolor function)and the resulting image (combined_thresholds_color3) from last step with the thresoled L channel from LAB colorsystem to obtain the binary thresholded image 4 (combined_thresholds_color4).
+ 
+ 
+
 
 
 3. Perspective transform ("birds-eye view") 
