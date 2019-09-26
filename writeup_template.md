@@ -31,35 +31,30 @@ The steps of this project are the following:
 
 ## Rubric Points
 
-### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
+##### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 ---
 
-### Writeup / README
-
-#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  [Here](https://github.com/udacity/CarND-Advanced-Lane-Lines/blob/master/writeup_template.md) is a template writeup for this project you can use as a guide and a starting point.  
-
-
-1-#Compute the camera calibration matrix and distortion coefficients 
+1.  Compute the camera calibration matrix and distortion coefficients 
 To calculate camera calibration for Images that are stored in the folder called camera_cal, I compute the camera matrix and distortion co-efficients to undistort the image.
 
-2-# Gradients and color thresholds. Here I calculated Sobel X , Y , Magnitude and Direction Gradients
+2.  Gradients and color thresholds. Here I calculated Sobel X , Y , Magnitude and Direction Gradients
 
 I applied thresholds on X, Y and direction und magnitude gradients and combined them with threshold of  the color channel H from HLS color spaces to obtain the binary thresholded image 1 and then combine binary image from the last step with the L channel from LUV and R from RGB and L from LAB colorsystem to obtain the binary thresholded image 4.
 
 
-3-# Perspective transform ("birds-eye view") 
+3. Perspective transform ("birds-eye view") 
 
 First, I extracted the source and distinction points to perform a perspective transformation. Then I feed the binary threshold image from the last step into the transform_image(img) function to get a bird's eye view from above.
 
-4#Nois Detection
+4.  Nois Detection
 By detecting Nois i am goining to use the variable (binary threshold image 1 )that is of Sobe X,Y, direction and magnitude gradients and H from the HLS coolor sytem cobination and has better result in noisy images.
 
-4-# Implement Sliding Windows and Fit a Polynomial
+5. Implement Sliding Windows and Fit a Polynomial
 
 On this level I perform a sliding window search, startingwith the base likely positions of the 2 lane (shown in the first image), calculated from the histogram. I used 9 windows with a width of 100 pixels. The x & y coordinates of non-zero pixels are found, a polynomial is adjusted for these coordinates and the track lines are drawn.
 
-5-# Finding the Lines: Search from Prior
+6. Finding the Lines: Search from Prior
 
 Searching around previosly detected lane line Since consecutive frames are likely to have lane lines in roughly similar positions, we search around a margin of 100 pixels of the previously detected lane lines.
 
