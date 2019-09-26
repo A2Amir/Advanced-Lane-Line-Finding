@@ -18,18 +18,18 @@ The steps of this project are the following:
 
 ### Instructions:
 
-The images for camera calibration are stored in the folder called camera_cal. The images in test_images are for testing the pipeline on single frames. To extract more test images from the videos, you can simply use an image writing method like cv2.imwrite(), i.e., you can read the video in frame by frame as usual, and for frames you want to save for later you can write to an image file.
+* The images for camera calibration are stored in the folder called camera_cal. The images in test_images are for testing the pipeline on single frames. To extract more test images from the videos, you can simply use an image writing method like cv2.imwrite(), i.e., you can read the video in frame by frame as usual, and for frames you want to save for later you can write to an image file.
 
-The examples of the output from each stage of the pipeline saved in the folder called output_images, and included a description in this writeup for the project of what each image shows. The video called project_video.mp4 is the video your pipeline should work well on.
+* The examples of the output from each stage of the pipeline saved in the folder called output_images, and included a description in this writeup for the project of what each image shows. The video called project_video.mp4 is the video your pipeline should work well on.
 
-The challenge_video.mp4 video is an extra (and optional) challenge for you if you want to test your pipeline under somewhat trickier conditions. The harder_challenge.mp4 video is another optional challenge and is brutal!
+* The challenge_video.mp4 video is an extra (and optional) challenge for you if you want to test your pipeline under somewhat trickier conditions. The harder_challenge.mp4 video is another optional challenge and is brutal!
 
 [//]: # (Image References)
 
 
 
 
-## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
+## Rubric Points
 
 ### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
