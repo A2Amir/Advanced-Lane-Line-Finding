@@ -52,7 +52,7 @@ The steps of this project are the following:
 <img src="./output_images/3.png" alt=" Gradients and color thresholds" />
 <p align="right">
  
- *  Then I combine the binary image from the last step (combined_gradient)  with  of the thresholded color channel H from HLS color spaces (HLScolor function) to obtain a binary image (combined_thresholds_color1) and then use this binary image to combine with the thresoled L channel from LUV space color (LUVcolor function) to get another binary image (combined_thresholds_color2) and then use the resulting binary image from the last step to combine with the thresoled R channel from RGB (RGBcolor function)and the resulting image (combined_thresholds_color3) from last step with the thresoled L channel from LAB colorsystem to obtain the binary thresholded image 4 (combined_thresholds_color4).
+ *  Then I combine the binary image from the last step (combined_gradient)  with  of the threshold color channel H from HLS color spaces (HLScolor function) to obtain a binary image (combined_thresholds_color1) and then use this binary image to combine with the thresol L channel from LUV space color (LUVcolor function) to get another binary image (combined_thresholds_color2) and then use the resulted binary image from the last step to combine with the threshold R channel from RGB (RGBcolor function)and the resulted image (combined_thresholds_color3) from last step with the threshol L channel from LAB colorsystem to obtain the binary threshold image 4 (combined_thresholds_color4).
  
  <p align="right">
 <img src="./output_images/4.png" alt=" Gradients and color thresholds" />
@@ -69,14 +69,17 @@ The steps of this project are the following:
 
 
 
-3. Perspective transform ("birds-eye view") 
+3. Perspective transform ("birds-eye view"): First, I extracted the source and distinction points to perform a perspective transformation with help of the calc_warp_points function, then I feed the binary threshold image from the last step into the transform_image() function to get a bird's eye view from above which will be rectified by adding morphological dilation and erosion to make the edge lines continuous. 
 
-fsdfsdfdsfs
+ <p align="right">
+<img src="./output_images/8.png" alt="  Perspective transform" />
+<p align="right">
+ <p align="right">
+<img src="./output_images/9.png" alt="  Perspective transform" />
+<p align="right">
 
-First, I extracted the source and distinction points to perform a perspective transformation. Then I feed the binary threshold image from the last step into the transform_image(img) function to get a bird's eye view from above.
+4.  Nois Detection: In this step Noise will be detected by using a function named noise_detect and if the result of this function is True, Instead of using the combined_thresholds_color4 wir are g goining to use the variable combined_thresholds_color1 which has better result in noisy images for Perspective transforming (step 3).
 
-4.  Nois Detection
-By detecting Nois i am goining to use the variable (binary threshold image 1 )that is of Sobe X,Y, direction and magnitude gradients and H from the HLS coolor sytem cobination and has better result in noisy images.
 
 5. Implement Sliding Windows and Fit a Polynomial
 
@@ -85,7 +88,7 @@ On this level I perform a sliding window search, startingwith the base likely po
 6. Finding the Lines: Search from Prior
 
 Searching around previosly detected lane line Since consecutive frames are likely to have lane lines in roughly similar positions, we search around a margin of 100 pixels of the previously detected lane lines.
-
+ 
 
 ![alt text][image1]
 
