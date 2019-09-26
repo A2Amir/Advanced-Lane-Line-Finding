@@ -1,13 +1,11 @@
 
 
-### Advanced Lane Finding
-
+### Advanced Lane Finding:
 
 The goal of this project is to write a software pipeline to identify the lane boundaries in a video, but the main output or product we want you to create is a detailed writeup of the project.
----
 
 
-The goals / steps of this project are the following:
+The steps of this project are the following:
 
 * Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
 * Apply a distortion correction to raw images.
@@ -20,7 +18,7 @@ The goals / steps of this project are the following:
 
 ### Instructions:
 
-The images for camera calibration are stored in the folder called camera_cal. The images in test_images are for testing the pipeline on single frames. If you want to extract more test images from the videos, you can simply use an image writing method like cv2.imwrite(), i.e., you can read the video in frame by frame as usual, and for frames you want to save for later you can write to an image file.
+The images for camera calibration are stored in the folder called camera_cal. The images in test_images are for testing the pipeline on single frames. To extract more test images from the videos, you can simply use an image writing method like cv2.imwrite(), i.e., you can read the video in frame by frame as usual, and for frames you want to save for later you can write to an image file.
 
 The examples of the output from each stage of the pipeline saved in the folder called output_images, and included a description in this writeup for the project of what each image shows. The video called project_video.mp4 is the video your pipeline should work well on.
 
@@ -28,7 +26,7 @@ The challenge_video.mp4 video is an extra (and optional) challenge for you if yo
 
 [//]: # (Image References)
 
-Fotos are in the jupyter-notebook enviroment.
+
 
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
