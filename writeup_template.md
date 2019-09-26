@@ -35,8 +35,7 @@ The steps of this project are the following:
 
 ---
 
-1.  Compute the camera calibration matrix and distortion coefficients 
-To calculate camera calibration for Images that are stored in the folder called camera_cal, I compute the camera matrix and distortion co-efficients to undistort the image.
+1.  Compute the camera calibration matrix and distortion coefficients given a set of chessboard images: To calculate camera calibration for Images that are stored in the folder called camera_cal, I compute the camera matrix and distortion co-efficients to undistort the all images.
 
 2.  Gradients and color thresholds. Here I calculated Sobel X , Y , Magnitude and Direction Gradients
 
