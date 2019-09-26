@@ -44,9 +44,11 @@ The steps of this project are the following:
 
 2.  Gradients and color thresholds,Sobel X , Y , Magnitude and Direction Gradients: 
 
-*   First I applied thresholds on X, Y (abs_sobel_thresh function) and magnitude (mag_thresh function) direction (dir_threshold function) gradients to combine them into a binaray image(combined_gradient) by using combined_thresholds function.
+*   First I applied thresholds on X, Y (abs_sobel_thresh function), magnitude (mag_thresh function) and direction (dir_threshold function) gradients to combine them into a binaray image(named combined_gradient) by using combined_thresholds function.
 
- *  I combine all  with  of the thresholded color channel H from HLS color spaces (HLScolor function) to obtain the binary thresholded (combined_thresholds_color1) and then combine binary image from the last step with the thresoled L channel from LUV space color (LUVcolor function) to get another binary image (combined_thresholds_color2) and then combined the resulting binary image from the last step with the thresoled R channel from RGB (RGBcolor function)and the resulting image (combined_thresholds_color3) from last step with the thresoled L channel from LAB colorsystem to obtain the binary thresholded image 4 (combined_thresholds_color4).
+ *  Then I combine the binary image from the last step (combined_gradient)  with  of the thresholded color channel H from HLS color spaces (HLScolor function) to obtain a binary image (combined_thresholds_color1) and then use this binary image to combine with the thresoled L channel from LUV space color (LUVcolor function) to get another binary image (combined_thresholds_color2) and then combined the resulting binary image from the last step with the thresoled R channel from RGB (RGBcolor function)and the resulting image (combined_thresholds_color3) from last step with the thresoled L channel from LAB colorsystem to obtain the binary thresholded image 4 (combined_thresholds_color4).
+ 
+ 
 
 
 
