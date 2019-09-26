@@ -69,9 +69,7 @@ The steps of this project are the following:
 
 
 
-3. Perspective transform ("birds-eye view") 
-
-First, I extracted the source and distinction points to perform a perspective transformation with help of the calc_warp_points function, then I feed the binary threshold image from the last step into the transform_image() function to get a bird's eye view from above which will be rectified by adding morphological dilation and erosion to make the edge lines continuous. 
+3. Perspective transform ("birds-eye view"): First, I extracted the source and distinction points to perform a perspective transformation with help of the calc_warp_points function, then I feed the binary threshold image from the last step into the transform_image() function to get a bird's eye view from above which will be rectified by adding morphological dilation and erosion to make the edge lines continuous. 
 
  <p align="right">
 <img src="./output_images/8.png" alt="  Perspective transform" />
