@@ -78,7 +78,7 @@ The steps of this project are the following:
 <img src="./output_images/9.png" alt="  Perspective transform" />
 <p align="right">
 
-4.  Nois Detection: In this step Noise will be detected by using a function named noise_detect and if the result of this function is True, Instead of using the combined_thresholds_color4 wir are g goining to use the variable combined_thresholds_color1 which has better result in noisy images for Perspective transforming (step 3).
+4.  Nois Detection: In this step Noise will be detected by using a function named noise_detect and if the result of this function is True, instead of using the combined_thresholds_color4 variable wir are goining to use the variable combined_thresholds_color1 which has better result in noisy images for Perspective transforming (step 3).
 
 
 5. Implement Sliding Windows and Fit a Polynomial
