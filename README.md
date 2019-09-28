@@ -83,7 +83,7 @@ The steps of this project are the following:
 
 5. Implement Sliding Windows and Fit a Polynomial
 
-On this level I perform a sliding window search, startingwith the base likely positions of the 2 lane (shown in the first image), calculated from the histogram. I used 9 windows with a width of 100 pixels. The x & y coordinates of non-zero pixels are found, a polynomial is adjusted for these coordinates and the track lines are drawn.
+at this level to perform a sliding window search, which will be started with the base likely positions of the 2 lane, calculated by the get_histogram function then I used 9 windows with a width of 100 pixels. The x & y coordinates of non-zero pixels are found, a polynomial is adjusted for these coordinates and the track lines are drawn.
 
 6. Finding the Lines: Search from Prior
 
