@@ -52,7 +52,7 @@ The steps of this project are the following:
 <img src="./output_images/3.png" alt=" Gradients and color thresholds" />
 <p align="right">
  
- *  Then I combine the binary image from the last step (combined_gradient)  with  of the threshold color channel H from HLS color spaces (HLScolor function) to obtain a binary image (combined_thresholds_color1) and then use this binary image to combine with the thresol L channel from LUV space color (LUVcolor function) to get another binary image (combined_thresholds_color2) and then use the resulted binary image from the last step to combine with the threshold R channel from RGB (RGBcolor function)and the resulted image (combined_thresholds_color3) from last step with the threshol L channel from LAB colorsystem to obtain the binary threshold image 4 (combined_thresholds_color4).
+ *  Then I combine the binary image from the previous step (combined_gradient)  with  of the threshold color channel H from HLS color spaces (HLScolor function) to obtain a binary image (combined_thresholds_color1) and then use this binary image to combine with the thresol L channel from LUV space color (LUVcolor function) to get another binary image (combined_thresholds_color2) and then use the resulted binary image from the previous step to combine with the threshold R channel from RGB (RGBcolor function)and the resulted image (combined_thresholds_color3) from previous step with the threshol L channel from LAB colorsystem to obtain the binary threshold image 4 (combined_thresholds_color4).
  
  <p align="right">
 <img src="./output_images/4.png" alt=" Gradients and color thresholds" />
@@ -157,7 +157,6 @@ def car_offset(leftx, rightx, img_shape, xm_per_pix=3.7/800):
   <p align="right">
 <img src="./output_images/13.png" alt="Display numerical estimations of lane curvature and vehicle position" />
 <p align="right">
-### Pipeline (single images)
 
 
 ---
@@ -166,14 +165,11 @@ def car_offset(leftx, rightx, img_shape, xm_per_pix=3.7/800):
 In this step, all the previous steps will be used to create a pipeline that can be used on a video.
 The first thing I have done is to create the ProcessImage class. I have decided to use a class instead of a method because it would let me calibrate the camera when initializing the class and also keep some track of the previously detected lines.
 
-I used VideoFileClip from MoviePy library to read the input video then, I used fl_image to process each frame with our ProcessImage class. the resulting video is saved as [1.mp4](./output_images/1.mp4)
+I used VideoFileClip from MoviePy library to read the input video then, I used fl_image to process each frame with our ProcessImage class. the resulting video is saved as [project_video.mp4](./output_images/project_video.mp4)
 
 <video controls="controls">
-  <source type="video/mp4" src="./output_images/1.mp4"></source>
+  <source type="video/mp4" src="./output_images/project_video.mp4"></source>
   <p>Your browser does not support the video element.</p>
 </video>
-### Discussion
 
-#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
-
-Take a better perspective transform: choose a smaller section to take the transform since this video has sharper turns and the lenght of a lane is shorter than the previous videos.
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](./output_images/1.mp4)
