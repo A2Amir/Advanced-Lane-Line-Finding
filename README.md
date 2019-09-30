@@ -165,10 +165,10 @@ def car_offset(leftx, rightx, img_shape, xm_per_pix=3.7/800):
 In this step, all the previous steps will be used to create a pipeline that can be used on a video.
 The first thing I have done is to create the ProcessImage class. I have decided to use a class instead of a method because it would let me calibrate the camera when initializing the class and also keep some track of the previously detected lines.
 
-I used VideoFileClip from MoviePy library to read the input video then, I used fl_image to process each frame with our ProcessImage class. the resulting video is saved as [1.mp4](./output_images/1.mp4)
+I used VideoFileClip from MoviePy library to read the input video then, I used fl_image to process each frame with our ProcessImage class. the resulting video is saved as [project_video.mp4](./output_images/project_video.mp4)
 
 <video controls="controls">
-  <source type="video/mp4" src="./output_images/1.mp4"></source>
+  <source type="video/mp4" src="./output_images/project_video.mp4"></source>
   <p>Your browser does not support the video element.</p>
 </video>
 
