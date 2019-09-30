@@ -157,7 +157,6 @@ def car_offset(leftx, rightx, img_shape, xm_per_pix=3.7/800):
   <p align="right">
 <img src="./output_images/13.png" alt="Display numerical estimations of lane curvature and vehicle position" />
 <p align="right">
-### Pipeline (single images)
 
 
 ---
@@ -172,6 +171,8 @@ I used VideoFileClip from MoviePy library to read the input video then, I used f
   <source type="video/mp4" src="./output_images/1.mp4"></source>
   <p>Your browser does not support the video element.</p>
 </video>
+
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](./output_images/1.mp4)
 ### Discussion
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
