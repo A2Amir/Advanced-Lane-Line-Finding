@@ -173,8 +173,3 @@ I used VideoFileClip from MoviePy library to read the input video then, I used f
 </video>
 
 [![Watch the video](https://i.imgur.com/vKb2F1B.png)](./output_images/1.mp4)
-### Discussion
-
-#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
-
-Take a better perspective transform: choose a smaller section to take the transform since this video has sharper turns and the lenght of a lane is shorter than the previous videos.
