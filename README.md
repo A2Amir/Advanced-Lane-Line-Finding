@@ -81,9 +81,7 @@ The steps of this project are the following:
 4.  Nois Detection: In this step Noise will be detected by using a function named noise_detect and if the result of this function is True, instead of using the combined_thresholds_color4 variable wir are goining to use the variable combined_thresholds_color1 which has better result in noisy images for Perspective transforming (step 3).
 
 
-5. Implementing of sliding Windows and Fit a Polynomial
-
-In order to detect the lane pixels from the warped image, First, a histogram of the lower half of the warped image is created by using the get_histogram function then the starting left and right lanes positions are selected by looking to the max value of the histogram to the left and the right of the histogram's mid position.
+5. Implementing of sliding Windows and Fit a Polynomial: In order to detect the lane pixels from the warped image, First, a histogram of the lower half of the warped image is created by using the get_histogram function then the starting left and right lanes positions are selected by looking to the max value of the histogram to the left and the right of the histogram's mid position.
 Second a technique known as Sliding Window is used to identify the most likely coordinates of the lane lines in a window to found x & y coordinates of non-zero pixels.
 which slides vertically through the image for both the left and right line.
 Finally, usign the coordinates previously calculated, a second order polynomial is calculated for both the left and right lane line(Numpy's function np.polyfit will be used to calculate the polynomials) and the track lines are drawn.
@@ -95,9 +93,7 @@ Finally, usign the coordinates previously calculated, a second order polynomial 
 <p align="right">
 
 
-6. Finding the Lines: Search from Prior
-
-since consecutive frames are likely to have lane lines in roughly similar positions it is reasonable to assume that the lines will remain there in future video frames. detect_similar_lines() uses the previosly calculated line_fits to try to identify the lane lines in a consecutive image. If it fails to calculate it, it invokes detect_lines() function to perform a full search.
+6. Finding the Lines: Search from Prior:Ssince consecutive frames are likely to have lane lines in roughly similar positions it is reasonable to assume that the lines will remain there in future video frames. detect_similar_lines() uses the previosly calculated line_fits to try to identify the lane lines in a consecutive image. If it fails to calculate it, it invokes detect_lines() function to perform a full search.
 
 
  <p align="right">
