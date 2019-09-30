@@ -69,7 +69,7 @@ The steps of this project are the following:
 
 
 
-3. Perspective transform ("birds-eye view"): First, I extracted the source and distinction points to perform a perspective transformation with help of the calc_warp_points function, then I feed the binary threshold image from the last step into the transform_image() function to get a bird's eye view from above which will be rectified by adding morphological dilation and erosion to make the edge lines continuous. 
+3. Perspective transform ("birds-eye view"): First, I extracted the source and distinction points to perform a perspective transformation with help of the calc_warp_points function, then I feed the binary threshold image from the previous step into the transform_image() function to get a bird's eye view from above which will be rectified by adding morphological dilation and erosion to make the edge lines continuous. 
 
  <p align="right">
 <img src="./output_images/8.png" alt="  Perspective transform" />
@@ -81,9 +81,7 @@ The steps of this project are the following:
 4.  Nois Detection: In this step Noise will be detected by using a function named noise_detect and if the result of this function is True, instead of using the combined_thresholds_color4 variable wir are goining to use the variable combined_thresholds_color1 which has better result in noisy images for Perspective transforming (step 3).
 
 
-5. Implementing of sliding Windows and Fit a Polynomial
-
-In order to detect the lane pixels from the warped image, First, a histogram of the lower half of the warped image is created by using the get_histogram function then the starting left and right lanes positions are selected by looking to the max value of the histogram to the left and the right of the histogram's mid position.
+5. Implementing of sliding Windows and Fit a Polynomial: In order to detect the lane pixels from the warped image, First, a histogram of the lower half of the warped image is created by using the get_histogram function then the starting left and right lanes positions are selected by looking to the max value of the histogram to the left and the right of the histogram's mid position.
 Second a technique known as Sliding Window is used to identify the most likely coordinates of the lane lines in a window to found x & y coordinates of non-zero pixels.
 which slides vertically through the image for both the left and right line.
 Finally, usign the coordinates previously calculated, a second order polynomial is calculated for both the left and right lane line(Numpy's function np.polyfit will be used to calculate the polynomials) and the track lines are drawn.
@@ -95,128 +93,85 @@ Finally, usign the coordinates previously calculated, a second order polynomial 
 <p align="right">
 
 
-6. Finding the Lines: Search from Prior
-
-since consecutive frames are likely to have lane lines in roughly similar positions it is reasonable to assume that the lines will remain there in future video frames. detect_similar_lines() uses the previosly calculated line_fits to try to identify the lane lines in a consecutive image. If it fails to calculate it, it invokes detect_lines() function to perform a full search.
+6. Finding the Lines: Search from Prior:Since consecutive frames are likely to have lane lines in roughly similar positions it is reasonable to assume that the lines will remain there in future video frames. detect_similar_lines() uses the previosly calculated line_fits to try to identify the lane lines in a consecutive image. If it fails to calculate it, it invokes detect_lines() function to perform a full search.
 
 
  <p align="right">
 <img src="./output_images/11.png" alt=". Finding the Lines: Search from Prior" />
 <p align="right">
 
-
-![alt text][image1]
-
-### Pipeline (single images)
-
-#### 1. Provide an example of a distortion-corrected image.
-
-To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
-fotos are in jupyter environment.
-I used the calibration_calculate and cal_distortion undistortion functions to calulate calibration matrix and distortion coefficients amd by using the corners_unwarp functions i transformed fotos to bird eye view. 
-
-#### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
-
-I applied thresholds on X, Y and direction und magnitude gradients and combined them with Gradient of color channel H from HLS color spaces to obtain a binary thresholded image.
-
-#### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
-
-First, I extracted the source and distinction points to perform a perspective transformation. Then I feed the binary threshold image from the last step into the transform_image(img) function to get a bird's eye view from above.
-
+7. Determine the curvature of the lane, and vehicle position with respect to center: To calculate the radius of curvature of the lane and the position of the vehicle with respect to center I used the below preented functions:
 ```python
-
-    leftupperpoint  = [568,470]
-    rightupperpoint = [717,470]
-    leftlowerpoint  = [260,680]
-    rightlowerpoint = [1043,680]
-
-    src = np.float32([leftupperpoint, leftlowerpoint, rightupperpoint, rightlowerpoint])
-    dst = np.float32([[200,0], [200,680], [1000,0], [1000,680]])
-    M_inv = cv2.getPerspectiveTransform(dst, src)
-```
-
-
-
-
-#### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
-
-On this level I perform a sliding window search, startingwith the base likely positions of the 2 lane (shown in the first image), calculated from the histogram. I used 9 windows with a width of 100 pixels. The x & y coordinates of non-zero pixels are found, a polynomial is adjusted for these coordinates and the track lines are drawn.
-
-
-#### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
-
-I did  this  in the function`measure_curvature_real`
-```python
-def measure_curvature_real(img_shape,left_fitx,right_fitx):
-    ploty = np.linspace(0, img_shape[0]-1, num=img.shape[0])# to cover same y-range as image
-    ym_per_pix = 30/img_shape[0] # meters per pixel in y dimension
-    xm_per_pix = 3.7/700 
+def curvature_radius (leftx, rightx, img_shape, xm_per_pix=3.7/800, ym_per_pix = 25/720):
+    ploty = np.linspace(0, img_shape[0] - 1, img_shape[0])
     
-    left_fit_cr = np.polyfit(ploty*ym_per_pix, left_fitx*xm_per_pix, 2)
-    right_fit_cr = np.polyfit(ploty*ym_per_pix, right_fitx*xm_per_pix, 2)
+    leftx = leftx[::-1] 
+    rightx = rightx[::-1] 
+    
+    # Fit a second order polynomial to pixel positions in each fake lane line
+    left_fit = np.polyfit(ploty, leftx, 2)
+    left_fitx = left_fit[0]*ploty**2 + left_fit[1]*ploty + left_fit[2]
+    right_fit = np.polyfit(ploty, rightx, 2)
+    right_fitx = right_fit[0]*ploty**2 + right_fit[1]*ploty + right_fit[2]
+
+    # Define conversions in x and y from pixels space to meters
+    ym_per_pix = 25/720 # meters per pixel in y dimension
+    xm_per_pix = 3.7/800 # meters per pixel in x dimension
+
+    # Fit new polynomials to x,y in world space
     y_eval = np.max(ploty)
+    left_fit_cr = np.polyfit(ploty*ym_per_pix, leftx*xm_per_pix, 2)
+    right_fit_cr = np.polyfit(ploty*ym_per_pix, rightx*xm_per_pix, 2)
     
-
-    left_curverad = ((1+ (2* left_fit_cr[0]*ym_per_pix* y_eval+left_fit_cr[1]) **2) **1.5)/np.absolute(2*left_fit_cr[0])  ## Implement         the calculation of the left line here
-
-right_curverad =((1+ (2* right_fit_cr[0]*ym_per_pix* y_eval+right_fit_cr[1]) **2) **1.5)/np.absolute(2*right_fit_cr[0])      Implement the calculation of the right line here
-
+    # Calculate the new radii of curvature
+    left_curverad = ((1 + (2*left_fit_cr[0]*y_eval*ym_per_pix + left_fit_cr[1])**2)**1.5) / np.absolute(2*left_fit_cr[0])
+    right_curverad = ((1 + (2*right_fit_cr[0]*y_eval*ym_per_pix + right_fit_cr[1])**2)**1.5) / np.absolute(2*right_fit_cr[0])
     
-    h = ym_per_pix
-    car_position = img_shape[1]/2
-    l_fit_x_int = left_fit_cr[0]*h**2 + left_fit_cr[1]*h + left_fit_cr[2]
-    r_fit_x_int = right_fit_cr[0]*h**2 + right_fit_cr[1]*h + right_fit_cr[2]
-    lane_center_position = (r_fit_x_int + l_fit_x_int) /2
-    center_dist = (car_position - lane_center_position) * xm_per_pix
+    # Now our radius of curvature is in meters
+    return (left_curverad, right_curverad)
 
-    return left_curverad, right_curverad,center_dist
+```
+```python
+def car_offset(leftx, rightx, img_shape, xm_per_pix=3.7/800):
+    ## Image mid horizontal position 
+    mid_imgx = img_shape[1]//2
+        
+    ## Car position with respect to the lane
+    car_pos = (leftx[-1] + rightx[-1])/2
+    
+    ## Horizontal car offset 
+    offsetx = (mid_imgx - car_pos) * xm_per_pix
+
+    return offsetx
 
 ```
 
-#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
+8. Display lane boundaries:The lane lines will draw onto the warped blank version using the Opencv function cv2.fillPoly. the blank will be warped back to original image space using inverse perspective matrix (Minv).This code is implemented in the draw_lane() function.
 
-I implemented this step in the function `Drawing()`.  an example of my result is ai the jupyter notebook.
+ <p align="right">
+<img src="./output_images/12.png" alt="Display lane boundaries" />
+<p align="right">
 
+ 9. Display numerical estimations of lane curvature and vehicle position: With help add_metrics function,the numerical estimation of lane curvature and vehicle position will be wraped onto the image(img_lane) received from the previous step(8). 
+ 
+  <p align="right">
+<img src="./output_images/13.png" alt="Display numerical estimations of lane curvature and vehicle position" />
+<p align="right">
+### Pipeline (single images)
 
 
 ---
 
-### Pipeline (video)
+### Pipeline (video): 
+In this step, all the previous steps will be used to create a pipeline that can be used on a video.
+The first thing I have done is to create the ProcessImage class. I have decided to use a class instead of a method because it would let me calibrate the camera when initializing the class and also keep some track of the previously detected lines.
 
-#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
+I used VideoFileClip from MoviePy library to read the input video then, I used fl_image to process each frame with our ProcessImage class. the resulting video is saved as [1.mp4](./output_images/1.mp4)
 
-The pipeline is applied to videos
-
-1-undistor image.
-
-2-claculate x gradient.
-
-3-calculate y gradient.
-
-4-calculate direction gradient.
-
-5-calculate magnitude gradient.
-
-6-calculate color threshold of S channel from HLS color space.
-
-7-calculate color threshold of L channel from LUV color space.
-
-8-calculate color threshold of B channel from LAB color space.
-
-9- combined all gradients and thresholds fom last steps.
-
-10-Feed the threshold binary image to tensform perspectice function to get a bird eye view.
-
-11-add morphological dilation and erosion to make the edge lines continuous
-
-12-perform nois detection function and if the answer of it is True we can take the binary image from combined_thresholds_color1 that has better result in noisy images.
-
-13-perform fit polynomial algorithm.
-
-14-perform search around poly algorithm.
-
-
-
+<video controls="controls">
+  <source type="video/mp4" src="./output_images/1.mp4"></source>
+  <p>Your browser does not support the video element.</p>
+</video>
 ### Discussion
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
