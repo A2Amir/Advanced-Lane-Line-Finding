@@ -84,8 +84,12 @@ The steps of this project are the following:
 5. Implementing of sliding Windows and Fit a Polynomial: In order to detect the lane pixels from the warped image, First, a histogram of the lower half of the warped image is created by using the get_histogram function then the starting left and right lanes positions are selected by looking to the max value of the histogram to the left and the right of the histogram's mid position.
 Second a technique known as Sliding Window is used to identify the most likely coordinates of the lane lines in a window to found x & y coordinates of non-zero pixels.
 which slides vertically through the image for both the left and right line.
-Finally, usign the coordinates previously calculated, a second order polynomial is calculated for both the left and right lane line(Numpy's function np.polyfit will be used to calculate the polynomials) and the track lines are drawn.
+Finally, usign the coordinates previously calculated, a second order polynomial is fitted for both the left and right lane line(Numpy's function np.polyfit will be used to calculate the polynomials) and the track lines are drawn.
 
+ <p align="right">
+ A second order polynomial is fitted:
+<img src="./output_images/14.png" alt=" A second order polynomial is fitted" />
+<p align="right">
 
 
  <p align="right">
