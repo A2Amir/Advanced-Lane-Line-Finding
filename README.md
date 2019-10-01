@@ -176,4 +176,4 @@ I used VideoFileClip from MoviePy library to read the input video then, I used f
   <p>Your browser does not support the video element.</p>
 </video>
 
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](./output_images/1.mp4)
+[![Watch the video](./output_images/GT1.gif)
