@@ -88,7 +88,7 @@ Finally, usign the coordinates previously calculated, a second order polynomial 
 
  <p align="right">
  A second order polynomial is fitted:
-<img src="./output_images/14.png" alt=" A second order polynomial is fitted" />
+<img src="./output_images/14.PNG" alt=" A second order polynomial is fitted" />
 <p align="right">
 
 
