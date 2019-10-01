@@ -171,9 +171,6 @@ The first thing I have done is to create the ProcessImage class. I have decided 
 
 I used VideoFileClip from MoviePy library to read the input video then, I used fl_image to process each frame with our ProcessImage class. the resulting video is saved as [project_video.mp4](./output_images/project_video.mp4)
 
-<video controls="controls">
-  <source type="video/mp4" src="./output_images/project_video.mp4"></source>
-  <p>Your browser does not support the video element.</p>
-</video>
 
-[![Watch the video](./output_images/GT1.gif)
+
+![Watch the video](./output_images/GT1.gif)
