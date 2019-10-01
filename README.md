@@ -86,10 +86,10 @@ Second a technique known as Sliding Window is used to identify the most likely c
 which slides vertically through the image for both the left and right line.
 Finally, usign the coordinates previously calculated, a second order polynomial is fitted for both the left and right lane line(Numpy's function np.polyfit will be used to calculate the polynomials) and the track lines are drawn.
 
- <p align="left">
+ <p align="center">
  A second order polynomial is fitted:
 <img src="./output_images/14.PNG" alt=" A second order polynomial is fitted" />
-<p align="left">
+<p align="center">
 
 
  <p align="right">
